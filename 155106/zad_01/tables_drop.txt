@@ -1,0 +1,51 @@
+-- 1. 
+
+-- uzupełnienie tabel
+INSERT INTO DEPARTMENTS (department_name, manager_id) VALUES ('departament1', 2);
+INSERT INTO DEPARTMENTS (department_name, manager_id) VALUES ('departament2', 3);
+INSERT INTO DEPARTMENTS (department_name, manager_id) VALUES ('departament20', 2);
+INSERT INTO DEPARTMENTS (department_name, manager_id) VALUES ('departament50', 2);
+
+SELECT * FROM COUNTRIES;
+SELECT * FROM DEPARTMENTS;
+SELECT * FROM EMPLOYEES;
+SELECT * FROM JOB_HISTORY;
+SELECT * FROM JOBS;
+SELECT * FROM LOCATIONS;
+SELECT * FROM REGIONS;
+
+UPDATE EMPLOYEES SET department_id = 20 WHERE employee_id = 3;
+
+DELETE FROM DEPARTMENTS WHERE department_id = 3 OR department_id = 4;
+
+SELECT last_name, salary wynagrodzenie FROM employees
+WHERE department_id = 20 OR department_id = 50 AND 
+salary >= 2000 AND salary <= 7000
+GROUP BY last_name;
+
+ALTER TABLE DEPARTMENTS DROP CONSTRAINT fk_departments__employees_manager_id;
+ALTER TABLE DEPARTMENTS DROP CONSTRAINT fk_departments__locations_location_id;
+
+ALTER TABLE COUNTRIES DROP CONSTRAINT fk_countries__regions_region_id;
+
+ALTER TABLE EMPLOYEES DROP CONSTRAINT fk_employees__departments_department_id;
+ALTER TABLE EMPLOYEES DROP CONSTRAINT fk_employees__employees_manager_id;
+ALTER TABLE EMPLOYEES DROP CONSTRAINT fk_employees__jobs_job_id;
+
+ALTER TABLE JOB_HISTORY DROP CONSTRAINT fk_job_history__departments_department_id;
+ALTER TABLE JOB_HISTORY DROP CONSTRAINT fk_job_history__employees_employee_id;
+ALTER TABLE JOB_HISTORY DROP CONSTRAINT fk_job_history__jobs_job_id;
+
+ALTER TABLE LOCATIONS DROP CONSTRAINT fk_locations__countries_country_id;
+
+DELETE FROM DEPARTMENTS;
+DELETE FROM EMPLOYEES;
+DELETE FROM JOBS;
+
+DROP TABLE COUNTRIES;
+DROP TABLE DEPARTMENTS;
+DROP TABLE EMPLOYEES;
+DROP TABLE JOB_HISTORY;
+DROP TABLE JOBS;
+DROP TABLE LOCATIONS;
+DROP TABLE REGIONS;
