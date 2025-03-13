@@ -262,3 +262,22 @@ SELECT d.department_id, d.department_name
 FROM departments d
 LEFT JOIN employees e ON d.department_id = e.department_id
 WHERE e.department_id IS NULL;
+
+-- wypisz imię i nazwisko, 
+--id pracy, nazwę departamentu, zarobki, 
+--oraz odpowiedni grade dla każdego pracownika
+
+SELECT 
+    e.first_name ||' '||e.last_name,
+    e.job_id,
+    d.department_name,
+    e.salary,
+    (SELECT jg.grade from job_grades jg WHERE e.salary BETWEEN jg.min_salary AND jg.max_salary) as grade
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+
+-- Wypisz imię i nazwisko oraz zarobki dla osób, 
+--które zarabiają więcej niż średnia wszystkich, 
+--uporzadkuj malejaco według zarobkow
+
+
