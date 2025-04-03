@@ -1,0 +1,52 @@
+SET SERVEROUTPUT ON;
+
+---- sekcja deklaracji
+--DECLARE
+--zmienna NUMBER := 20;
+--
+---- sekcja wykonawcza
+--BEGIN
+--DBMS_OUTPUT.PUT_LINE('hello, PL/SQL');
+--
+---- obsługa wyjątków
+--EXCEPTION
+--
+--END;
+
+
+DECLARE 
+zmienna NUMBER := 20;
+srednia NUMBER;
+BEGIN
+SELECT AVG(salary) INTO srednia FROM employees;
+DBMS_OUTPUT.PUT_LINE('hello, PL/SQL ' || zmienna);
+DBMS_OUTPUT.PUT_LINE('srednia: ' || srednia);
+
+--FOR ... END LOOP;
+END;
+
+// 1, 2
+DECLARE
+numer_max NUMBER;
+new_department_name departments.department_name%type := 'EDUCATION';
+
+BEGIN 
+SELECT MAX(department_id) into numer_max FROM departments;
+DBMS_OUTPUT.PUT_LINE('department max number: ' || numer_max);
+DBMS_OUTPUT.PUT_LINE('department name column: ' || new_department_name);
+--INSERT INTO Departments(department_id, department_name) VALUES (numer_max+10, new_department_name);
+UPDATE Departments SET location_id=3000 WHERE department_id = numer_max;
+
+END;
+
+
+// 3
+CREATE TABLE nowa (
+    pole varchar2(255)
+);
+
+
+BEGIN 
+    
+END;
+
