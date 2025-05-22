@@ -1,4 +1,2 @@
 # ZSBD_155106_1130
-Projekt 2-osobowy
-## Tomasz Bułecki 155106
-## Emil Falkowski 162151
+Repozytorium przedmiotu Zaawansowane Systemy Baz Danych (Zadania)
